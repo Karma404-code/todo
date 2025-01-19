@@ -1,0 +1,39 @@
+
+// import function displayProject(project,div)
+import { displayProject } from "./displayProject";
+
+const content = document.querySelector(".content");
+
+// function to display content of sidebar
+const displayPage = function(page){
+    // remove child node (only one child node in content)
+    content.removeChild(content.firstChild);
+
+    const group = document.createElement("div");
+    group.className = "page";
+
+    const heading = document.createElement("h1");
+    heading.className = "heading";
+    heading.textContent = page.getHeading();
+
+    const description = document.createElement("p");
+    description.className = "description";
+    description.textContent = page.getDescription();
+
+    // HTML element to append project inside of the page
+    const divProjects = document.createElement("div");
+    divProjects.className = "projects";
+
+    group.appendChild(heading);
+    group.appendChild(description);
+    group.appendChild(divProjects);
+    
+    content.appendChild(group);
+    
+    for(let project in page.setOfProject){
+        displayProject(page.setOfProject[project],divProjects);
+    }
+}
+
+export {displayPage};
+

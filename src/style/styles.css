@@ -1,0 +1,36 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-color: rebeccapurple;
+}
+
+.container{
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.sidebar{
+    grid-area: 0 0 1 1;
+
+    .links{
+        padding: 100px 30px 30px 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        button{
+            padding: 8px;
+            font-size: large;
+            border-radius: 10px;
+        }
+        
+    }
+}
+
+.content{
+    grid-area: 0 1 2 1;
+}
