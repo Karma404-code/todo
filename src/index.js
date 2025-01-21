@@ -4,3 +4,5 @@ import { displaySidebarLinks } from "./DOM_logic/displaySidebar";
 
 displaySidebarLinks(content);
 
+
+

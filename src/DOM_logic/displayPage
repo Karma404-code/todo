@@ -1,6 +1,7 @@
 
 // import function displayProject(project,div)
 import { displayProject } from "./displayProject";
+import { displayProjectForm } from "./displayProjectForm";
 
 const content = document.querySelector(".content");
 
@@ -37,8 +38,15 @@ const displayPage = function(page){
 
     // Logic to add project to page.setOfProject
     addProjectButton.addEventListener("click", () => {
+        debugger;
+        displayProjectForm(addProjectButton);
         page.addProject();
         
+        // To display the newly added project if there is any
+        const form = document.querySelector(".projectForm");
+        form.addEventListener("submit",()=>{
+            displayPage(page)
+        });
     });
 
     // Logic to remove project from page.setOfProject
