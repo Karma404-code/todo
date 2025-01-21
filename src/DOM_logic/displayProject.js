@@ -1,8 +1,9 @@
 
+import { displayTodo } from "./displayTodo";
 
-const displayProject = function(project, div){
+const displayProject = function(project, div, deleteProject){
     const projectDiv = document.querySelector(".".concat(div.className));
-    console.log(projectDiv);
+    
     const group = document.createElement("div");
     group.className = "project";
 
@@ -18,16 +19,35 @@ const displayProject = function(project, div){
     priority.className = "priority";
     priority.textContent = project.getPriority();
 
-    const remove = document.createElement("button");
-    remove.className = "removeProject";
-    remove.textContent = "delete";
+    const removeProject = document.createElement("button");
+    removeProject.className = "removeProject";
+    removeProject.textContent = "delete";
+
+    const divTodo = document.createElement("div");
+    divTodo.className = "todos";
 
     group.appendChild(title);
     group.appendChild(dueDate);
     group.appendChild(priority);
-    group.appendChild(remove);
+    group.appendChild(removeProject); 
+    group.appendChild(divTodo);
 
     projectDiv.appendChild(group);
+
+    // Event listner to delete button
+    removeProject.addEventListener("click", () => {
+        deleteProject(project);
+        group.remove();
+    })
+
+    const deleteTodo = function(todo){
+        project.removeTodo(project.setOfTodo.indexOf(todo));
+    } 
+     
+    for(let todo in project.setOfTodo){
+        debugger;
+         displayTodo(project.setOfTodo[todo],divTodo,deleteTodo);
+    }
 };
 
 

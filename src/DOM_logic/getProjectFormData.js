@@ -1,21 +1,19 @@
 
-import {Project} from "./Project.js";
+import {Project} from "../application_logic/Project.js";
 
 // Get project information and create projects
-const getProjectFormData = function(formName){
-    const form = document.querySelector(formName);
-    let listOfProject = new Array;
+function getProjectFormData(setOfProject){
+    const form = document.querySelector(".projectForm");
 
-    form.addEventListener("submit", (e) => {
+    const getData = e => {
+        debugger;
         e.preventDefault();
-
         const formObj = new FormData(form);
-        // console.log(Object.fromEntries(formObj)); 
-
         const project = new Project(formObj.get("title"),formObj.get("dueDate"),formObj.get("priority"));
-        listOfProject.push(project);
-        // console.log(listOfProject);
-    });
+        setOfProject.push(project);
+        form.removeEventListener("submit",getData);
+    };
+    form.addEventListener("submit",getData);
 };
 
 export {getProjectFormData};

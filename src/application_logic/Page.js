@@ -1,6 +1,5 @@
-
 import {Project} from "./Project.js";
-
+import { getProjectFormData } from "../DOM_logic/getProjectFormData.js";
 // Constructor for Page
 
 function Page(heading, description){
@@ -10,18 +9,11 @@ function Page(heading, description){
 
     // Add and remove Project from the set 
     this.addProject = function(){
-        const project = new Project("Project_test",2025,"high");
-        this.setOfProject.push(project);
+        getProjectFormData(this.setOfProject);
     },
 
     this.removeProject = function(index){
         this.setOfProject.splice(index,1);
-    },
-
-    this.showProject = function(){
-        for(let project in this.setOfProject){
-            console.log(project);
-        }
     }
 }
 // function to set and get heading

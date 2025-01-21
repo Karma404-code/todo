@@ -20,19 +20,36 @@ const displayPage = function(page){
     description.className = "description";
     description.textContent = page.getDescription();
 
+    const addProjectButton = document.createElement("button");
+    addProjectButton.className = "addProject";
+    addProjectButton.textContent = "Add Project";
+
     // HTML element to append project inside of the page
     const divProjects = document.createElement("div");
     divProjects.className = "projects";
 
     group.appendChild(heading);
     group.appendChild(description);
+    group.appendChild(addProjectButton);
     group.appendChild(divProjects);
     
     content.appendChild(group);
+
+    // Logic to add project to page.setOfProject
+    addProjectButton.addEventListener("click", () => {
+        page.addProject();
+        
+    });
+
+    // Logic to remove project from page.setOfProject
+    const deleteProject = function(project){
+        page.removeProject(page.setOfProject.indexOf(project));
+    }
     
     for(let project in page.setOfProject){
-        displayProject(page.setOfProject[project],divProjects);
+        displayProject(page.setOfProject[project],divProjects,deleteProject);
     }
+
 }
 
 export {displayPage};
